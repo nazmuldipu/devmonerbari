@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md fixed-top dark-primary-color navbar-dark raised">
+    <div class="container-fluid">
+      <a class="navbar-brand" (click)="toggleCollapse()" routerLink="/">
+        <h4 class="font-weight-normal d-inline text-center pl-2">
+          <img src="assets/images/wlogo.svg" height="40px" width="40px" alt=""> মনের বাড়ি
+        </h4>
+      </a>
+      <!-- <a class="navbar-brand" (click)="toggleCollapse()" routerLink="/home/index" routerLinkActive="active">MON Infotech</a> -->
+      <button class="navbar-toggler" (click)="toggleCollapse()" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+      </button>
+      <div class="collapse navbar-collapse show" id="navbarCollapse" [class.show]="show">
+        <ul class="navbar-nav mr-auto">
+          <li>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item" *ngIf="auth.isAuthenticated()">
+            <a class="nav-link" (click)="toggleCollapse()" routerLink="/dashboard/index" routerLinkActive="active">ড্যাশবোর্ড</a>
+          </li>
+          <li ngbDropdown *ngIf="auth.isAuthenticated()" placement="bottom-right" class="nav-item dropdown">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ auth.getUsername() }}</a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown02">
+              <a class="dropdown-item" routerLink="/dashboard/users/profile" (click)="toggleCollapse()">
+                <i class="fa fa-user"></i>&nbsp;আমার প্রোফাইল </a>
+              <a class="dropdown-item" routerLink="/dashboard/users/changePassword" (click)="toggleCollapse()">
+                <i class="fa fa-unlock-alt"></i>&nbsp;পাসওয়ার্ড পরিবর্তন</a>
+              <a class="dropdown-item" (click)="logout()">
+                <i class="fa fa-sign-out"></i>&nbsp;লগআউট </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-primary btn-sm" *ngIf="!auth.isAuthenticated()" routerLink="/login">লগ ইন </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

@@ -118,8 +118,18 @@
               "devServerTarget": "monerbari-frotend-v2:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "monerbari-frotend-v2"
+    }
+  },
+  "defaultProject": "monerbari-frotend-v2",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

@@ -1,0 +1,71 @@
+<div class="app-login">
+    <div class="login-box">
+  
+      <div class="offset-md-4 col-md-4 p-0 login-form">
+        <div class="logo">
+          <img src="assets/images/logo.svg" height="100px" width="100px" alt="">
+        </div>
+        <div class="text-center">
+          <a class="" routerLink="/">
+            <h2>
+              <span> মনেরবাড়ি </span>
+            </h2>
+          </a>
+        </div>
+        <div class="card p-0">
+  
+          <div class="alert alert-danger" role="alert" *ngIf="auth.errorMessage.length > 1">
+            {{ auth.errorMessage }}
+          </div>
+  
+          <div class="card-body raised">
+            <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+              <div class="form-group mx-3">
+                <label>ফোন নাম্বার </label>
+                <input type="text" class="form-control" placeholder="আপনার ফোন নাম্বার " [(ngModel)]="user.username" formControlName="username">
+                <small class="text-danger" *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.touched">ফোন নাম্বার আবশ্যক</small>
+              </div>
+              <div class="form-group mx-3">
+                <label class="d-flex justify-content-between">
+                  <span> পাসওয়ার্ড </span>
+                  <span class="float-right">
+                    <a routerLink="/password-reset">পাসওয়ার্ড ভুলে গেছেন?</a>
+                  </span>
+                </label>
+                <div class="input-group mb-1 mr-sm-2 mb-sm-0">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="আপনার পাসওয়ার্ড" [(ngModel)]="user.password"
+                    formControlName="password">
+                  <span class="input-group-btn">
+                    <a class="btn btn-outline-secondary" (click)="showPassword = !showPassword">
+                      <i class="fa fa-eye" [ngClass]="showPassword?'fa-eye-slash':'fa-eye'"></i>
+                    </a>
+                  </span>
+                </div>
+                <small class="text-danger" *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.dirty">পাসওয়ার্ড আবশ্যক</small>
+                <small class="text-danger" *ngIf="loginForm.controls.password.errors?.minlength && loginForm.controls.password.dirty && !loginForm.controls.password.errors?.required">কমপক্ষে ৬ অক্ষর আবশ্যক</small>
+              </div>
+              <div class="form-check m-3">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="user.remember" formControlName="remember"> আমাকে স্মরণ রাখুন!
+                </label>
+                <!-- <a class="float-right" routerLink="/register">Forgot Password?</a> -->
+              </div>
+  
+              <div class="form-group m-3 d-flex justify-content-between">
+                <div>
+                  রেজিস্ট্রেশন করেন নি?
+                  <br/>
+                  <a routerLink="/register">
+                    <strong>রেজিস্ট্রেশন</strong>
+                  </a>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="this.loginForm.invalid"> লগ ইন </button>
+              </div>
+  
+            </form>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
