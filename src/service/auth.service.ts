@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+  errorMessage = '';
   
   constructor() { }
 
@@ -12,5 +13,7 @@ export class AuthService {
   }
 
   clear() {}
+
+  getUsername(){}
  
 }

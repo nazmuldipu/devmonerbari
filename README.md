@@ -1,5 +1,5 @@
 add remote repository:
-    git remote add origin https://github..com:nazmuldipu/devmonerbari.git
+    git remote add origin git@github.com:nazmuldipu/devmonerbari.git
 
 Add angular-cli-ghpages to your project.
     ng add angular-cli-ghpages
